@@ -1,0 +1,181 @@
+# ============================================================
+#  ABSOLUTE — .gitignore
+#  Security-hardened | YubiKey | API Keys | Env | Secrets
+# ============================================================
+
+# ------------------------------------------------------------
+# ENVIRONMENT & SECRETS
+# ------------------------------------------------------------
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.backup
+*.env
+secrets.json
+secrets.yaml
+secrets.yml
+credentials.json
+credentials.yaml
+credentials.yml
+
+# ------------------------------------------------------------
+# API KEYS & CONFIG
+# ------------------------------------------------------------
+config/api.js
+config/keys.js
+config/secrets.js
+config/private.js
+api-keys.txt
+api-keys.json
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.der
+
+# ------------------------------------------------------------
+# YUBIKEY & HARDWARE SECURITY MODULES
+# ------------------------------------------------------------
+*.yubikey
+*.yubico
+yubikey-config.*
+yubikey.json
+yubikey.txt
+yk-*.json
+yk-*.txt
+*.pgp
+*.gpg
+*.asc
+pgp-keys/
+gpg-keys/
+hsm-config/
+hsm-keys/
+piv-keys/
+piv-config.*
+*.slot
+*.token
+fido2-config.*
+webauthn-secrets.*
+u2f-keys/
+u2f-config/
+smartcard.*
+smartcard-config/
+pkcs11.conf
+pkcs11-config/
+*.p8
+*.p7b
+*.spc
+openpgp-config/
+*.kdbx
+*.keepass
+
+# ------------------------------------------------------------
+# TOKENS & AUTH
+# ------------------------------------------------------------
+*.token
+*.tokens
+auth-tokens.*
+refresh-tokens.*
+access-tokens.*
+oauth-tokens.*
+session-secrets.*
+jwt-secret.*
+jwt-keys/
+*.session
+session.json
+
+# ------------------------------------------------------------
+# CERTIFICATES & SSH
+# ------------------------------------------------------------
+*.ssh
+.ssh/
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+id_ecdsa
+id_ecdsa.pub
+known_hosts
+authorized_keys
+*.ppk
+
+# ------------------------------------------------------------
+# NODE & PACKAGE MANAGERS
+# ------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+package-lock.json
+.npm
+.yarn
+.pnpm-store
+.pnp.*
+
+# ------------------------------------------------------------
+# BUILD & DIST
+# ------------------------------------------------------------
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+.vite/
+*.bundle.js
+*.bundle.css
+*.min.js
+*.min.css
+
+# ------------------------------------------------------------
+# LOGS
+# ------------------------------------------------------------
+logs/
+*.log
+log/
+debug.log
+error.log
+combined.log
+access.log
+
+# ------------------------------------------------------------
+# OS FILES
+# ------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ------------------------------------------------------------
+# VS CODE
+# ------------------------------------------------------------
+.vscode/settings.json
+.vscode/launch.json
+.vscode/*.code-snippets
+!.vscode/extensions.json
+
+# ------------------------------------------------------------
+# MISC SENSITIVE
+# ------------------------------------------------------------
+*.bak
+*.backup
+*.orig
+*.swp
+*.swo
+*~
+.history/
+.local/
+private/
+private.js
+private.json
+internal/
