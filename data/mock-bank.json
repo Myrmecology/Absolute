@@ -1,0 +1,192 @@
+{
+  "account": {
+    "id": "OMEGA-7749-ABSOLUTE",
+    "agent": "Agent",
+    "clearance": "Omega",
+    "currency": "USD",
+    "totalBalance": 24750,
+    "missionFund": 8200,
+    "monthlyIncome": 6400,
+    "monthlyExpenses": 3180,
+    "lastUpdated": "Cycle 7 — Active"
+  },
+  "budgetCategories": [
+    {
+      "id": 1,
+      "name": "Mission Equipment",
+      "emoji": "⚡",
+      "allocated": 1200,
+      "spent": 890,
+      "color": "#00f5ff"
+    },
+    {
+      "id": 2,
+      "name": "Portal Access Fees",
+      "emoji": "🌀",
+      "allocated": 800,
+      "spent": 800,
+      "color": "#7b2fff"
+    },
+    {
+      "id": 3,
+      "name": "Temporal Provisions",
+      "emoji": "🔮",
+      "allocated": 450,
+      "spent": 210,
+      "color": "#ff2ff8"
+    },
+    {
+      "id": 4,
+      "name": "Intelligence Assets",
+      "emoji": "◈",
+      "allocated": 600,
+      "spent": 420,
+      "color": "#ffd700"
+    },
+    {
+      "id": 5,
+      "name": "Extraction Insurance",
+      "emoji": "▲",
+      "allocated": 300,
+      "spent": 300,
+      "color": "#00ff9d"
+    },
+    {
+      "id": 6,
+      "name": "Artefact Storage",
+      "emoji": "🌌",
+      "allocated": 250,
+      "spent": 130,
+      "color": "#ff7b00"
+    }
+  ],
+  "barChartData": {
+    "6m": {
+      "labels": ["Cycle 2", "Cycle 3", "Cycle 4", "Cycle 5", "Cycle 6", "Cycle 7"],
+      "income":   [4200, 5100, 4800, 6200, 5900, 6400],
+      "expenses": [2100, 2800, 2400, 3100, 2900, 3180]
+    },
+    "3m": {
+      "labels": ["Cycle 5", "Cycle 6", "Cycle 7"],
+      "income":   [6200, 5900, 6400],
+      "expenses": [3100, 2900, 3180]
+    },
+    "1m": {
+      "labels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+      "income":   [1600, 1600, 1600, 1600],
+      "expenses": [980, 720, 840, 640]
+    }
+  },
+  "pieChartData": {
+    "labels": [
+      "Mission Equipment",
+      "Portal Access",
+      "Provisions",
+      "Intelligence",
+      "Insurance",
+      "Artefact Storage"
+    ],
+    "values": [1200, 800, 450, 600, 300, 250],
+    "colors": [
+      "#00f5ff",
+      "#7b2fff",
+      "#ff2ff8",
+      "#ffd700",
+      "#00ff9d",
+      "#ff7b00"
+    ]
+  },
+  "transactions": [
+    {
+      "id": 1,
+      "name": "Portal Access — Earth-7",
+      "amount": 800,
+      "type": "expense",
+      "icon": "🌀",
+      "date": "Cycle 7 — Day 4"
+    },
+    {
+      "id": 2,
+      "name": "Mission Stipend — Omega",
+      "amount": 3200,
+      "type": "income",
+      "icon": "◈",
+      "date": "Cycle 7 — Day 3"
+    },
+    {
+      "id": 3,
+      "name": "Temporal Gear Restock",
+      "amount": 420,
+      "type": "expense",
+      "icon": "⚡",
+      "date": "Cycle 7 — Day 3"
+    },
+    {
+      "id": 4,
+      "name": "Artefact Appraisal — 1923-D",
+      "amount": 130,
+      "type": "expense",
+      "icon": "🌌",
+      "date": "Cycle 7 — Day 2"
+    },
+    {
+      "id": 5,
+      "name": "Intelligence Asset Payment",
+      "amount": 420,
+      "type": "expense",
+      "icon": "🔮",
+      "date": "Cycle 7 — Day 2"
+    },
+    {
+      "id": 6,
+      "name": "Reality Bonus — Crystal Expanse",
+      "amount": 1800,
+      "type": "income",
+      "icon": "💎",
+      "date": "Cycle 7 — Day 1"
+    },
+    {
+      "id": 7,
+      "name": "Extraction Insurance Premium",
+      "amount": 300,
+      "type": "expense",
+      "icon": "▲",
+      "date": "Cycle 6 — Day 7"
+    },
+    {
+      "id": 8,
+      "name": "Dimensional Research Grant",
+      "amount": 1400,
+      "type": "income",
+      "icon": "⬡",
+      "date": "Cycle 6 — Day 6"
+    },
+    {
+      "id": 9,
+      "name": "Temporal Provisions Pack",
+      "amount": 210,
+      "type": "expense",
+      "icon": "🔮",
+      "date": "Cycle 6 — Day 5"
+    },
+    {
+      "id": 10,
+      "name": "Omega Clearance Renewal",
+      "amount": 500,
+      "type": "expense",
+      "icon": "◈",
+      "date": "Cycle 6 — Day 4"
+    }
+  ],
+  "buyList": [
+    { "id": 1, "text": "Temporal stabilizer unit", "checked": false },
+    { "id": 2, "text": "Dimensional compass mk.4", "checked": true },
+    { "id": 3, "text": "Anti-paradox field generator", "checked": false },
+    { "id": 4, "text": "Reality anchor tether", "checked": false }
+  ],
+  "avoidList": [
+    { "id": 1, "text": "Black market portal keys", "checked": false },
+    { "id": 2, "text": "Unregistered artefacts", "checked": false },
+    { "id": 3, "text": "Epoch-class time debt", "checked": false }
+  ]
+}

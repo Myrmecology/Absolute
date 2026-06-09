@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABSOLUTE — Operations Hub</title>
+
+  <!-- ============================================================
+       FONTS
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       STYLES
+  ============================================================ -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/cursor.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/tabs/create-trip.css" />
+  <link rel="stylesheet" href="css/tabs/bank.css" />
+  <link rel="stylesheet" href="css/tabs/media.css" />
+
+  <!-- ============================================================
+       ENV INJECTION
+  ============================================================ -->
+  <script>
+    window.__ENV__ = {
+      CLAUDE_API_KEY: "",
+      FAL_API_KEY: ""
+    };
+  </script>
+</head>
+
+<body class="dashboard-body">
+
+  <!-- ============================================================
+       CUSTOM CURSOR
+  ============================================================ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="cursor-trail-container"></div>
+  <div id="cursor-aura"></div>
+
+  <!-- ============================================================
+       OVERLAYS
+  ============================================================ -->
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+  <div class="vignette"></div>
+  <div class="scan-wipe"></div>
+
+  <!-- ============================================================
+       DASHBOARD NAVIGATION
+  ============================================================ -->
+  <nav class="dashboard-nav">
+
+    <!-- Left — Logo + Agent -->
+    <div class="nav-left">
+      <div class="nav-logo">
+        <span class="nav-logo-mark">ABSOLUTE</span>
+        <div class="nav-logo-divider"></div>
+        <div class="nav-agent-block">
+          <span class="nav-agent-label">Agent</span>
+          <span class="nav-agent-name" id="nav-agent-name">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center — Tabs -->
+    <div class="nav-center">
+
+      <button
+        class="nav-tab tab-create-trip active magnetic"
+        data-tab="create-trip"
+        id="tab-create-trip"
+      >
+        <span class="tab-icon">🌀</span>
+        <span class="tab-label">Create Trip</span>
+        <span class="tab-indicator"></span>
+      </button>
+
+      <button
+        class="nav-tab tab-bank magnetic"
+        data-tab="bank"
+        id="tab-bank"
+      >
+        <span class="tab-icon">◈</span>
+        <span class="tab-label">Bank</span>
+        <span class="tab-indicator"></span>
+      </button>
+
+      <button
+        class="nav-tab tab-media magnetic"
+        data-tab="media"
+        id="tab-media"
+      >
+        <span class="tab-icon">⬡</span>
+        <span class="tab-label">Media</span>
+        <span class="tab-indicator"></span>
+      </button>
+
+    </div>
+
+    <!-- Right — System Status -->
+    <div class="nav-right">
+      <div class="nav-system-time">
+        <span class="system-time-value" id="system-time">00:00:00</span>
+        <span class="system-time-label">System Time</span>
+      </div>
+      <div class="nav-status-cluster">
+        <div class="nav-status-item">
+          <span class="status-dot pulse"></span>
+          <span>Online</span>
+        </div>
+        <div class="nav-status-item">
+          <span class="status-dot" style="background: var(--neon-violet); box-shadow: var(--glow-violet-sm);"></span>
+          <span>Secure</span>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- ============================================================
+       DASHBOARD CONTENT
+  ============================================================ -->
+  <main class="dashboard-content">
+
+    <!-- ========================================================
+         CREATE TRIP PANEL
+    ======================================================== -->
+    <section class="tab-panel active" id="panel-create-trip">
+
+      <div class="panel-header">
+        <div class="panel-title-block">
+          <h2 class="panel-title">Create Trip</h2>
+          <p class="panel-subtitle">// Interdimensional & Temporal Mission Planner — Omega Clearance</p>
+        </div>
+        <div class="flex" style="gap: var(--space-3); align-items: center;">
+          <span class="badge badge-cyan">Mission Ready</span>
+          <span class="badge badge-violet">AI Assisted</span>
+        </div>
+      </div>
+
+      <!-- Mission Intro -->
+      <div class="mission-intro">
+        <div class="mission-intro-icon">🌌</div>
+        <div class="mission-intro-text">
+          <div class="mission-intro-title">Temporal & Dimensional Navigation System</div>
+          <div class="mission-intro-desc">
+            Configure your mission parameters below. Our AI core will generate
+            a classified dossier, assess temporal risk, and open a portal
+            to your destination. All missions are logged under Omega clearance.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Reveal Zone -->
+      <div class="scroll-reveal-zone" id="scroll-reveal-zone">
+
+        <!-- Trigger Button -->
+        <button class="scroll-trigger-btn magnetic" id="scroll-trigger-btn">
+          <span class="scroll-trigger-icon">📜</span>
+          <span>Access Mission Scroll</span>
+        </button>
+
+        <!-- The Scroll -->
+        <div class="mission-scroll" id="mission-scroll">
+          <div class="scroll-body">
+            <div class="scroll-header">
+              <span class="scroll-title">Mission Authorization Scroll</span>
+              <span class="scroll-classification">⚠ TOP SECRET</span>
+            </div>
+            <p style="font-family: var(--font-body); font-size: var(--fs-sm); color: var(--text-muted); line-height: var(--lh-relaxed); margin-bottom: var(--space-5);">
+              You are about to initiate a classified interdimensional or temporal
+              mission. Fill in all required parameters accurately. The AI core
+              will generate your mission dossier and open a portal to your
+              destination upon submission. Proceed with extreme caution.
+              ABSOLUTE is not responsible for temporal paradoxes.
+            </p>
+            <button class="scroll-start-btn magnetic" id="scroll-start-btn">
+              <span>⚡</span>
+              <span>Begin Mission Parameters</span>
+              <span>⚡</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mission Form -->
+      <div class="mission-form" id="mission-form">
+
+        <!-- Section 1 — Agent Info -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-number">1</span>
+            Agent Information
+          </div>
+          <div class="form-row">
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Agent Name <span class="field-required">*</span>
+              </label>
+              <input
+                type="text"
+                class="mission-input"
+                id="mission-agent-name"
+                placeholder="Your designation"
+                autocomplete="off"
+              />
+            </div>
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Clearance Level
+              </label>
+              <select class="mission-input field-select" id="mission-clearance">
+                <option value="omega">Omega</option>
+                <option value="alpha">Alpha</option>
+                <option value="delta">Delta</option>
+                <option value="sigma">Sigma</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 — Destination -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-number">2</span>
+            Destination Parameters
+          </div>
+          <div class="form-row">
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Target Year <span class="field-required">*</span>
+              </label>
+              <div class="year-input-wrapper">
+                <input
+                  type="number"
+                  class="mission-input"
+                  id="mission-year"
+                  placeholder="e.g. 1987"
+                  min="-9999"
+                  max="9999"
+                />
+                <span class="year-input-suffix">AD/BC</span>
+              </div>
+            </div>
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Reality Designation <span class="field-required">*</span>
+              </label>
+              <input
+                type="text"
+                class="mission-input"
+                id="mission-reality"
+                placeholder="e.g. Earth-7, Mirror Realm"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="mission-field">
+            <label class="mission-field-label">
+              Reality Description <span class="field-required">*</span>
+            </label>
+            <textarea
+              class="mission-input mission-textarea"
+              id="mission-reality-desc"
+              placeholder="Describe what this reality looks like, its atmosphere, society, environment..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Section 3 — Mission Details -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-number">3</span>
+            Mission Details
+          </div>
+          <div class="form-row">
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Mission Duration <span class="field-required">*</span>
+              </label>
+              <input
+                type="text"
+                class="mission-input"
+                id="mission-duration"
+                placeholder="e.g. 72 hours, 14 days"
+                autocomplete="off"
+              />
+            </div>
+            <div class="mission-field">
+              <label class="mission-field-label">
+                Mission Objective
+              </label>
+              <input
+                type="text"
+                class="mission-input"
+                id="mission-objective"
+                placeholder="Primary mission goal"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="mission-field">
+            <label class="mission-field-label">
+              Items & Equipment <span class="field-required">*</span>
+            </label>
+            <div class="inventory-tag-container" id="inventory-tag-container">
+              <input
+                type="text"
+                class="inventory-tag-input"
+                id="inventory-input"
+                placeholder="Type an item and press Enter..."
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 — Additional Notes -->
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-number">4</span>
+            Additional Intelligence
+          </div>
+          <div class="mission-field">
+            <label class="mission-field-label">Threat Assessment Notes</label>
+            <textarea
+              class="mission-input mission-textarea"
+              id="mission-notes"
+              placeholder="Known threats, anomalies, special considerations for this mission..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-mission-btn magnetic" id="submit-mission-btn">
+          <span class="btn-bg"></span>
+          <span class="btn-glitch-layer"></span>
+          <span class="btn-text">Generate Mission Dossier</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+      </div>
+
+      <!-- Dossier Output Panel -->
+      <div class="dossier-panel" id="dossier-panel">
+
+        <!-- Portal Image -->
+        <div class="portal-image-container">
+          <div class="portal-loading" id="portal-loading">
+            <div class="spinner"></div>
+            <span class="portal-loading-text">Opening Portal...</span>
+          </div>
+          <img
+            class="portal-image"
+            id="portal-image"
+            src=""
+            alt="Portal destination"
+          />
+          <div class="portal-image-overlay"></div>
+          <span class="portal-image-label" id="portal-image-label">— Portal View —</span>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="departure-countdown" id="departure-countdown">
+          <span class="countdown-label">⏱ Departure Countdown</span>
+          <div class="countdown-display">
+            <div class="countdown-unit">
+              <span class="countdown-value" id="cd-hours">72</span>
+              <span class="countdown-unit-label">Hours</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="cd-minutes">00</span>
+              <span class="countdown-unit-label">Minutes</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="cd-seconds">00</span>
+              <span class="countdown-unit-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission Dossier Text -->
+        <div class="dossier-text-panel">
+          <div class="dossier-section-title">Mission Dossier</div>
+          <div class="dossier-text" id="dossier-text">
+            Generating classified mission briefing...
+          </div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="risk-panel">
+          <div class="dossier-section-title" style="color: var(--neon-red);">
+            Risk Assessment
+          </div>
+          <div class="risk-items" id="risk-items">
+            <div class="risk-item">
+              <span class="risk-item-icon">⚠</span>
+              <span>Analyzing mission parameters...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reset Button -->
+        <button class="reset-mission-btn magnetic" id="reset-mission-btn">
+          ↩ Plan New Mission
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         BANK PANEL
+    ======================================================== -->
+    <section class="tab-panel" id="panel-bank">
+
+      <div class="panel-header">
+        <div class="panel-title-block">
+          <h2 class="panel-title">Bank</h2>
+          <p class="panel-subtitle">// Mission Financial Command — Budget Simulator</p>
+        </div>
+        <div class="flex" style="gap: var(--space-3); align-items: center;">
+          <span class="badge badge-gold">Omega Account</span>
+          <span class="badge badge-green">Solvent</span>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="bank-stats-row">
+        <div class="bank-stat-card cyan">
+          <span class="bank-stat-icon">◈</span>
+          <div class="bank-stat-value" id="bank-total-balance">$24,750</div>
+          <div class="bank-stat-label">Total Balance</div>
+          <div class="bank-stat-change up">↑ 12.4% this cycle</div>
+        </div>
+        <div class="bank-stat-card gold">
+          <span class="bank-stat-icon">⬡</span>
+          <div class="bank-stat-value" id="bank-mission-fund">$8,200</div>
+          <div class="bank-stat-label">Mission Fund</div>
+          <div class="bank-stat-change up">↑ 3.1% this cycle</div>
+        </div>
+        <div class="bank-stat-card green">
+          <span class="bank-stat-icon">▲</span>
+          <div class="bank-stat-value" id="bank-income">$6,400</div>
+          <div class="bank-stat-label">Monthly Income</div>
+          <div class="bank-stat-change up">↑ 8.7% vs last cycle</div>
+        </div>
+        <div class="bank-stat-card red">
+          <span class="bank-stat-icon">▼</span>
+          <div class="bank-stat-value" id="bank-expenses">$3,180</div>
+          <div class="bank-stat-label">Monthly Expenses</div>
+          <div class="bank-stat-change down">↑ 2.3% vs last cycle</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="bank-charts-row">
+
+        <!-- Bar Chart -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">
+              <span class="chart-card-title-dot"></span>
+              Spending Overview
+            </div>
+            <div class="chart-filter-group">
+              <button class="chart-filter-btn active" data-period="6m">6M</button>
+              <button class="chart-filter-btn" data-period="3m">3M</button>
+              <button class="chart-filter-btn" data-period="1m">1M</button>
+            </div>
+          </div>
+          <div class="chart-canvas-wrapper bar-chart-wrapper">
+            <canvas id="bar-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">
+              <span class="chart-card-title-dot" style="background: var(--neon-violet);"></span>
+              Budget Split
+            </div>
+          </div>
+          <div class="chart-canvas-wrapper pie-chart-wrapper">
+            <canvas id="pie-chart"></canvas>
+          </div>
+          <div class="pie-legend" id="pie-legend"></div>
+        </div>
+
+      </div>
+
+      <!-- Lower Row -->
+      <div class="bank-lower-row">
+
+        <!-- Budget Editor -->
+        <div class="budget-editor">
+          <div class="budget-editor-title">◈ Budget Allocations</div>
+          <div class="budget-category-list" id="budget-category-list"></div>
+          <div class="budget-total-row">
+            <span class="budget-total-label">Total Allocated</span>
+            <span class="budget-total-value" id="budget-total">$0</span>
+          </div>
+          <div class="budget-add-row">
+            <input
+              type="text"
+              class="budget-add-input"
+              id="budget-add-name"
+              placeholder="Category name..."
+            />
+            <input
+              type="number"
+              class="budget-add-input"
+              id="budget-add-amount"
+              placeholder="Amount"
+              style="width: 90px;"
+            />
+            <button class="budget-add-btn" id="budget-add-btn">+ Add</button>
+          </div>
+        </div>
+
+        <!-- Buy List -->
+        <div class="shopping-list-panel">
+          <div class="list-panel-header">
+            <div class="list-panel-title buy">
+              ✓ Buy List
+              <span class="list-count-badge" id="buy-count">0</span>
+            </div>
+          </div>
+          <div class="shopping-list" id="buy-list"></div>
+          <div class="list-add-row">
+            <input
+              type="text"
+              class="list-add-input buy-input"
+              id="buy-input"
+              placeholder="Add item to buy..."
+            />
+            <button class="list-add-btn buy-btn" id="buy-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Avoid List -->
+        <div class="shopping-list-panel">
+          <div class="list-panel-header">
+            <div class="list-panel-title avoid">
+              ✕ Avoid List
+              <span class="list-count-badge" id="avoid-count">0</span>
+            </div>
+          </div>
+          <div class="shopping-list" id="avoid-list"></div>
+          <div class="list-add-row">
+            <input
+              type="text"
+              class="list-add-input avoid-input"
+              id="avoid-input"
+              placeholder="Add item to avoid..."
+            />
+            <button class="list-add-btn avoid-btn" id="avoid-add-btn">+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Transaction Feed -->
+      <div class="transaction-feed">
+        <div class="chart-card-header">
+          <div class="chart-card-title">
+            <span class="chart-card-title-dot" style="background: var(--neon-magenta);"></span>
+            Transaction Log
+          </div>
+        </div>
+        <div class="transaction-list" id="transaction-list"></div>
+        <div class="add-transaction-form">
+          <input
+            type="text"
+            class="field-input"
+            id="transaction-name-input"
+            placeholder="Transaction name..."
+          />
+          <input
+            type="number"
+            class="field-input"
+            id="transaction-amount-input"
+            placeholder="Amount"
+          />
+          <div class="transaction-type-toggle">
+            <button class="type-toggle-btn income active" id="type-income">+ In</button>
+            <button class="type-toggle-btn expense" id="type-expense">− Out</button>
+          </div>
+          <button class="dash-btn dash-btn-sm" id="add-transaction-btn">Log</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         MEDIA PANEL
+    ======================================================== -->
+    <section class="tab-panel" id="panel-media">
+
+      <div class="panel-header">
+        <div class="panel-title-block">
+          <h2 class="panel-title">Media</h2>
+          <p class="panel-subtitle">// Interdimensional Social Network — Live Feed</p>
+        </div>
+        <div class="flex" style="gap: var(--space-3); align-items: center;">
+          <span class="badge badge-cyan">Connected</span>
+          <div class="nav-status-item">
+            <span class="status-dot pulse"></span>
+            <span style="font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--neon-green);">Live</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left Sidebar -->
+      <div class="media-sidebar-left">
+
+        <!-- Profile Card -->
+        <div class="media-profile-card">
+          <div class="profile-banner">
+            <div class="profile-banner-glow"></div>
+          </div>
+          <div class="profile-avatar-wrapper">
+            <div class="profile-avatar-ring"></div>
+            <div class="profile-avatar" id="media-profile-avatar">A</div>
+          </div>
+          <div class="profile-info">
+            <div class="profile-name" id="media-profile-name">Agent</div>
+            <div class="profile-handle" id="media-profile-handle">@agent.absolute</div>
+            <div class="profile-bio">
+              Omega-clearance operative. Traveler of realities.
+              Witness to the impossible.
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div class="profile-stat-item">
+              <span class="profile-stat-value">247</span>
+              <span class="profile-stat-label">Missions</span>
+            </div>
+            <div class="profile-stat-item">
+              <span class="profile-stat-value">1.4K</span>
+              <span class="profile-stat-label">Allies</span>
+            </div>
+            <div class="profile-stat-item">
+              <span class="profile-stat-value">892</span>
+              <span class="profile-stat-label">Reports</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="media-nav-links">
+          <div class="media-nav-link active">
+            <span class="media-nav-icon">⬡</span>
+            <span>Feed</span>
+          </div>
+          <div class="media-nav-link">
+            <span class="media-nav-icon">◈</span>
+            <span>Transmissions</span>
+            <span class="media-nav-badge">3</span>
+          </div>
+          <div class="media-nav-link">
+            <span class="media-nav-icon">▲</span>
+            <span>Operations</span>
+          </div>
+          <div class="media-nav-link">
+            <span class="media-nav-icon">🌀</span>
+            <span>Portals</span>
+          </div>
+          <div class="media-nav-link">
+            <span class="media-nav-icon">⚠</span>
+            <span>Alerts</span>
+            <span class="media-nav-badge">7</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Feed -->
+      <div class="media-feed" id="media-feed">
+
+        <!-- Stories Bar -->
+        <div class="stories-bar" id="stories-bar"></div>
+
+        <!-- Create Post -->
+        <div class="create-post-box">
+          <div class="create-post-avatar" id="create-post-avatar">A</div>
+          <div class="create-post-right">
+            <textarea
+              class="create-post-input"
+              id="create-post-input"
+              placeholder="Broadcast to the interdimensional network..."
+              rows="2"
+            ></textarea>
+            <div class="create-post-actions">
+              <div class="create-post-tools">
+                <button class="post-tool-btn" title="Image">🖼</button>
+                <button class="post-tool-btn" title="Location">📍</button>
+                <button class="post-tool-btn" title="Tag Reality">🌀</button>
+                <button class="post-tool-btn" title="Mood">⚡</button>
+              </div>
+              <button class="post-submit-btn magnetic" id="post-submit-btn">
+                Broadcast
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post Feed Container -->
+        <div id="posts-container"></div>
+
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="media-sidebar-right">
+
+        <!-- Trending -->
+        <div class="trending-panel">
+          <div class="sidebar-panel-title">
+            <span>▲</span> Trending Now
+          </div>
+          <div id="trending-list"></div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions-panel">
+          <div class="sidebar-panel-title">
+            <span>◈</span> Suggested Operatives
+          </div>
+          <div id="suggestions-list"></div>
+        </div>
+
+        <!-- Live Activity -->
+        <div class="live-activity-panel">
+          <div class="sidebar-panel-title">
+            <div class="live-dot"></div>
+            <span>Live Activity</span>
+          </div>
+          <div class="activity-feed" id="activity-feed"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <!-- App Scripts -->
+  <script src="config/api.js"></script>
+  <script src="data/mock-feed.json" type="application/json" id="mock-feed-data"></script>
+  <script src="data/mock-bank.json" type="application/json" id="mock-bank-data"></script>
+  <script src="js/login/cursor.js"></script>
+  <script src="js/dashboard/tabs.js"></script>
+  <script src="js/dashboard/transitions.js"></script>
+  <script src="js/tabs/create-trip/form.js"></script>
+  <script src="js/tabs/create-trip/claude.js"></script>
+  <script src="js/tabs/create-trip/flux.js"></script>
+  <script src="js/tabs/create-trip/dossier.js"></script>
+  <script src="js/tabs/bank/charts.js"></script>
+  <script src="js/tabs/bank/budget.js"></script>
+  <script src="js/tabs/bank/lists.js"></script>
+  <script src="js/tabs/media/feed.js"></script>
+  <script src="js/tabs/media/mock-data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

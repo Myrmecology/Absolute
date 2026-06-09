@@ -1,0 +1,190 @@
+{
+  "stories": [
+    { "id": 1, "name": "VEGA", "avatar": "🌟", "viewed": false },
+    { "id": 2, "name": "AXIOM", "avatar": "⚡", "viewed": false },
+    { "id": 3, "name": "NOVA", "avatar": "🌀", "viewed": true },
+    { "id": 4, "name": "CIPHER", "avatar": "◈", "viewed": false },
+    { "id": 5, "name": "LYRA", "avatar": "🔮", "viewed": true },
+    { "id": 6, "name": "DUSK", "avatar": "🌌", "viewed": false },
+    { "id": 7, "name": "ECHO", "avatar": "⬡", "viewed": false }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "username": "AGENT VEGA",
+      "handle": "@vega.absolute",
+      "avatar": "🌟",
+      "timestamp": "2 minutes ago",
+      "reality": "Earth-7",
+      "text": "Just returned from the #NeonCitadel in Earth-7. The architecture defies physics — buildings rotate on their own axis every 6 hours. Brought back three artefacts. @axiom.absolute you need to see this.",
+      "hasImage": true,
+      "imagePlaceholder": "🌆",
+      "likes": 247,
+      "comments": 34,
+      "shares": 12,
+      "liked": false,
+      "reactions": ["🔥", "⚡", "🌀"],
+      "reactionCount": 247,
+      "comments_data": [
+        {
+          "id": 1,
+          "username": "AXIOM",
+          "avatar": "⚡",
+          "text": "The rotating buildings are a known anomaly in that sector. Be careful with those artefacts — they emit temporal radiation.",
+          "timestamp": "1 min ago"
+        },
+        {
+          "id": 2,
+          "username": "CIPHER",
+          "avatar": "◈",
+          "text": "Cross-referencing with our dimensional database now. Earth-7 architecture is unlike anything in the known multiverse.",
+          "timestamp": "just now"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "AGENT NOVA",
+      "handle": "@nova.absolute",
+      "avatar": "🌀",
+      "timestamp": "14 minutes ago",
+      "reality": "Mirror Realm",
+      "text": "WARNING to all operatives — the #MirrorRealm is experiencing a phase shift. Entry portals are unstable between coordinates 44.7 and 89.2. Reroute your missions accordingly. Stay safe out there. #TemporalAlert #MirrorRealm",
+      "hasImage": false,
+      "likes": 892,
+      "comments": 156,
+      "shares": 341,
+      "liked": true,
+      "reactions": ["⚠", "🔮", "⚡"],
+      "reactionCount": 892,
+      "comments_data": [
+        {
+          "id": 1,
+          "username": "LYRA",
+          "avatar": "🔮",
+          "text": "Confirmed. Our sensors picked this up 20 minutes ago. All Mirror Realm missions have been suspended pending stabilization.",
+          "timestamp": "12 min ago"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "username": "AGENT DUSK",
+      "handle": "@dusk.absolute",
+      "avatar": "🌌",
+      "timestamp": "1 hour ago",
+      "reality": "Epoch-1923",
+      "text": "Mission debrief from #Epoch1923 — Paris during the surrealist movement is even more bizarre than the history books suggest. The artists were onto something real. Salvador Dali personally handed me a painting. It moves when you look away. Catalogued as Artefact-1923-D. #TemporalMission #Surrealism",
+      "hasImage": true,
+      "imagePlaceholder": "🎨",
+      "likes": 1204,
+      "comments": 89,
+      "shares": 203,
+      "liked": false,
+      "reactions": ["🎨", "🌀", "🔮"],
+      "reactionCount": 1204,
+      "comments_data": [
+        {
+          "id": 1,
+          "username": "VEGA",
+          "avatar": "🌟",
+          "text": "A painting that moves? That is either temporal bleed or dimensional seepage. Has it been contained properly?",
+          "timestamp": "58 min ago"
+        },
+        {
+          "id": 2,
+          "username": "ECHO",
+          "avatar": "⬡",
+          "text": "The surrealists were documented to have contact with dimensional entities. This confirms our hypothesis.",
+          "timestamp": "45 min ago"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "username": "AGENT CIPHER",
+      "handle": "@cipher.absolute",
+      "avatar": "◈",
+      "timestamp": "3 hours ago",
+      "reality": "Quantum-Null",
+      "text": "Cracked the encryption on the #QuantumNull transmission we intercepted last week. The message is from us. Future versions of our team are sending warnings back through the dimensional signal grid. I cannot share the full contents here — classified Omega level — but if you are assigned to the Kepler mission next cycle, reconsider. #Classified #TemporalWarning",
+      "hasImage": false,
+      "likes": 3847,
+      "comments": 412,
+      "shares": 891,
+      "liked": false,
+      "reactions": ["⚠", "◈", "🔮"],
+      "reactionCount": 3847,
+      "comments_data": [
+        {
+          "id": 1,
+          "username": "NOVA",
+          "avatar": "🌀",
+          "text": "This is not the first time we have received transmissions from our future selves. The Kepler mission coordinators need to see this immediately.",
+          "timestamp": "2 hrs ago"
+        },
+        {
+          "id": 2,
+          "username": "AXIOM",
+          "avatar": "⚡",
+          "text": "I am pulling the Kepler mission files now. Something does not add up about the departure window they scheduled.",
+          "timestamp": "2 hrs ago"
+        },
+        {
+          "id": 3,
+          "username": "DUSK",
+          "avatar": "🌌",
+          "text": "Reassigning to backup mission effective immediately. Not taking any chances with a future-self warning.",
+          "timestamp": "1 hr ago"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "username": "AGENT LYRA",
+      "handle": "@lyra.absolute",
+      "avatar": "🔮",
+      "timestamp": "5 hours ago",
+      "reality": "Earth-Prime",
+      "text": "Back on Earth-Prime after 14 days in the #CrystalExpanse reality. Time moves differently there — I aged approximately 4 hours while 14 days passed here. The flora is bioluminescent and communicates via low-frequency vibration. Brought back soil samples for dimensional botany. My whole perspective has shifted. #DimensionalTravel #CrystalExpanse",
+      "hasImage": true,
+      "imagePlaceholder": "💎",
+      "likes": 567,
+      "comments": 71,
+      "shares": 44,
+      "liked": false,
+      "reactions": ["💎", "🌀", "🌟"],
+      "reactionCount": 567,
+      "comments_data": [
+        {
+          "id": 1,
+          "username": "CIPHER",
+          "avatar": "◈",
+          "text": "The temporal dilation in the Crystal Expanse has been theorized but never confirmed by an operative. This is a significant debrief.",
+          "timestamp": "4 hrs ago"
+        }
+      ]
+    }
+  ],
+  "trending": [
+    { "rank": 1, "tag": "#MirrorRealm", "count": "24.7K transmissions" },
+    { "rank": 2, "tag": "#TemporalAlert", "count": "18.2K transmissions" },
+    { "rank": 3, "tag": "#KeplerMission", "count": "12.9K transmissions" },
+    { "rank": 4, "tag": "#CrystalExpanse", "count": "9.4K transmissions" },
+    { "rank": 5, "tag": "#QuantumNull", "count": "7.1K transmissions" }
+  ],
+  "suggestions": [
+    { "id": 1, "name": "Agent Orion", "avatar": "🌠", "reason": "Operative in your sector", "following": false },
+    { "id": 2, "name": "Agent Flux", "avatar": "⚡", "reason": "3 mutual operatives", "following": false },
+    { "id": 3, "name": "Agent Prism", "avatar": "🔷", "reason": "Similar mission profile", "following": true },
+    { "id": 4, "name": "Agent Zero", "avatar": "◯", "reason": "Omega clearance", "following": false }
+  ],
+  "activity": [
+    { "icon": "🌀", "text": "VEGA opened a portal to Earth-7", "time": "2m" },
+    { "icon": "⚡", "text": "AXIOM completed Kepler recon", "time": "8m" },
+    { "icon": "🔮", "text": "LYRA filed Crystal Expanse report", "time": "15m" },
+    { "icon": "◈", "text": "CIPHER decrypted Quantum signal", "time": "22m" },
+    { "icon": "⚠", "text": "Mirror Realm phase alert issued", "time": "31m" },
+    { "icon": "🌌", "text": "DUSK returned from Epoch-1923", "time": "1h" }
+  ]
+}
