@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABSOLUTE</title>
+
+  <!-- ============================================================
+       FONTS
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       STYLES
+  ============================================================ -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/cursor.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <!-- ============================================================
+       ENV INJECTION
+       In production replace this with your server-side env loader
+  ============================================================ -->
+  <script>
+    window.__ENV__ = {
+      CLAUDE_API_KEY: "",
+      FAL_API_KEY: ""
+    };
+  </script>
+</head>
+
+<body class="login-body">
+
+  <!-- ============================================================
+       CUSTOM CURSOR
+  ============================================================ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="cursor-trail-container"></div>
+
+  <!-- ============================================================
+       BABYLON.JS CANVAS — Full screen 3D background
+  ============================================================ -->
+  <canvas id="babylon-canvas"></canvas>
+
+  <!-- ============================================================
+       SCANLINE OVERLAY
+  ============================================================ -->
+  <div class="scanlines"></div>
+
+  <!-- ============================================================
+       NOISE OVERLAY
+  ============================================================ -->
+  <div class="noise-overlay"></div>
+
+  <!-- ============================================================
+       VIGNETTE
+  ============================================================ -->
+  <div class="vignette"></div>
+
+  <!-- ============================================================
+       LOGIN CONTAINER
+  ============================================================ -->
+  <div class="login-wrapper">
+
+    <!-- Logo / Title Block -->
+    <div class="login-logo-block">
+      <div class="logo-glyph">
+        <span class="glyph-line top"></span>
+        <span class="glyph-core">A</span>
+        <span class="glyph-line bottom"></span>
+      </div>
+      <h1 class="login-title">ABSOLUTE</h1>
+      <p class="login-subtitle">INTERDIMENSIONAL OPERATIONS HUB</p>
+      <div class="title-underline">
+        <span class="underline-travel"></span>
+      </div>
+    </div>
+
+    <!-- Status Readout -->
+    <div class="login-status-bar">
+      <span class="status-dot pulse"></span>
+      <span class="status-text" id="status-text">SYSTEM ONLINE — AWAITING AGENT IDENTIFICATION</span>
+    </div>
+
+    <!-- Input Block -->
+    <div class="login-input-block" id="login-input-block">
+
+      <div class="input-label-row">
+        <span class="input-label">AGENT DESIGNATION</span>
+        <span class="input-label-accent">//</span>
+        <span class="input-label-sub">CLEARANCE LEVEL: OMEGA</span>
+      </div>
+
+      <div class="input-field-wrapper" id="input-field-wrapper">
+        <div class="input-corner top-left"></div>
+        <div class="input-corner top-right"></div>
+        <div class="input-corner bottom-left"></div>
+        <div class="input-corner bottom-right"></div>
+        <div class="input-glow-track"></div>
+        <input
+          type="text"
+          id="agent-name"
+          class="agent-name-input"
+          placeholder="ENTER YOUR NAME"
+          maxlength="32"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="input-scan-line"></div>
+      </div>
+
+      <button class="login-btn" id="login-btn">
+        <span class="btn-bg"></span>
+        <span class="btn-glitch-layer"></span>
+        <span class="btn-text">INITIALIZE ACCESS</span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+    </div>
+
+    <!-- Boot Log -->
+    <div class="boot-log" id="boot-log">
+      <div class="boot-log-inner" id="boot-log-inner"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <span>ABSOLUTE v1.0.0</span>
+      <span class="footer-divider">|</span>
+      <span>CLASSIFIED OPERATIONS</span>
+      <span class="footer-divider">|</span>
+      <span id="footer-time"></span>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       TRANSITION OVERLAY — fires on successful login
+  ============================================================ -->
+  <div class="login-transition-overlay" id="login-transition-overlay">
+    <div class="transition-grid"></div>
+    <div class="transition-text">IDENTITY CONFIRMED</div>
+    <div class="transition-subtext" id="transition-subtext"></div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+
+  <!-- Babylon.js CDN -->
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+  <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
+  <!-- App Scripts -->
+  <script src="config/api.js"></script>
+  <script src="js/login/cursor.js"></script>
+  <script src="js/login/scene.js"></script>
+  <script src="js/login/auth.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

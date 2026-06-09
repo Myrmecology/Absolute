@@ -1,0 +1,630 @@
+/* ============================================================
+   ABSOLUTE — css/login.css
+   Login Screen | 3D Scene Container | Input | Button | Boot
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   LOGIN WRAPPER
+---------------------------------------------------------- */
+.login-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  pointer-events: none;
+}
+
+.login-wrapper > * {
+  pointer-events: auto;
+}
+
+/* ----------------------------------------------------------
+   LOGO BLOCK
+---------------------------------------------------------- */
+.login-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  animation: fade-in-down 1.2s var(--ease-out-expo) both;
+  animation-delay: 0.3s;
+}
+
+/* Glyph Icon */
+.logo-glyph {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: var(--space-2);
+}
+
+.glyph-core {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  color: transparent;
+  background: var(--grad-cyan-violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+  animation: geometry-breathe-slow 6s ease-in-out infinite;
+  letter-spacing: var(--ls-widest);
+}
+
+.glyph-line {
+  display: block;
+  height: 2px;
+  background: var(--grad-cyan-violet);
+  box-shadow: var(--glow-cyan-sm);
+  border-radius: var(--radius-pill);
+  animation: geometry-breathe 4s ease-in-out infinite;
+}
+
+.glyph-line.top {
+  width: 60px;
+  animation-delay: 0s;
+}
+
+.glyph-line.bottom {
+  width: 40px;
+  animation-delay: 0.5s;
+}
+
+/* Title */
+.login-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--neon-cyan) 0%,
+    #ffffff 40%,
+    var(--neon-violet) 70%,
+    var(--neon-magenta) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter:
+    drop-shadow(0 0 30px rgba(0, 245, 255, 0.6))
+    drop-shadow(0 0 60px rgba(123, 47, 255, 0.3));
+  animation: geometry-breathe 5s ease-in-out infinite;
+  position: relative;
+}
+
+/* Mirror reflection of title */
+.login-title::after {
+  content: 'ABSOLUTE';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 245, 255, 0.3) 0%,
+    transparent 60%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: scaleY(-1);
+  opacity: 0.3;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Subtitle */
+.login-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-widest);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  animation: flicker 8s steps(1) infinite;
+}
+
+/* Title underline with traveling light */
+.title-underline {
+  position: relative;
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-mid),
+    var(--border-mid),
+    transparent
+  );
+  overflow: hidden;
+  margin-top: var(--space-2);
+}
+
+.underline-travel {
+  position: absolute;
+  top: 0;
+  left: -60px;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan),
+    var(--neon-violet),
+    transparent
+  );
+  box-shadow: var(--glow-cyan-sm);
+  animation: underline-travel 3s linear infinite;
+}
+
+@keyframes underline-travel {
+  0%   { left: -60px; }
+  100% { left: 100%; }
+}
+
+/* ----------------------------------------------------------
+   STATUS BAR
+---------------------------------------------------------- */
+.login-status-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-5);
+  background: rgba(0, 245, 255, 0.04);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  clip-path: var(--clip-slash);
+  animation: fade-in 1s var(--ease-out-expo) both;
+  animation-delay: 0.6s;
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--neon-green);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------
+   INPUT BLOCK
+---------------------------------------------------------- */
+.login-input-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 480px;
+  animation: fade-in-up 1s var(--ease-out-expo) both;
+  animation-delay: 0.8s;
+}
+
+/* Label Row */
+.input-label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.input-label {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+}
+
+.input-label-accent {
+  font-family: var(--font-mono);
+  color: var(--neon-violet);
+  font-size: var(--fs-sm);
+}
+
+.input-label-sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* ----------------------------------------------------------
+   INPUT FIELD WRAPPER
+---------------------------------------------------------- */
+.input-field-wrapper {
+  position: relative;
+  background: rgba(0, 245, 255, 0.03);
+  border: 1px solid var(--border-neon);
+  clip-path: var(--clip-notch-all);
+  overflow: hidden;
+  transition:
+    background var(--dur-normal) var(--ease-out-expo),
+    border-color var(--dur-normal) var(--ease-out-expo);
+}
+
+.input-field-wrapper:hover,
+.input-field-wrapper:focus-within {
+  background: rgba(0, 245, 255, 0.06);
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan-md);
+}
+
+/* The glow track that travels along the top of input */
+.input-glow-track {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan),
+    var(--neon-violet),
+    transparent
+  );
+  animation: input-track-travel 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes input-track-travel {
+  0%   { left: -60%; }
+  100% { left: 150%; }
+}
+
+/* Scan line inside input */
+.input-scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 245, 255, 0.4),
+    transparent
+  );
+  pointer-events: none;
+  animation: input-scan 3s linear infinite;
+  opacity: 0;
+  transition: opacity var(--dur-normal) var(--ease-out-expo);
+}
+
+.input-field-wrapper:focus-within .input-scan-line {
+  opacity: 1;
+}
+
+/* The actual input element */
+.agent-name-input {
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  color: var(--neon-cyan);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  caret-color: var(--neon-cyan);
+  position: relative;
+  z-index: 1;
+}
+
+.agent-name-input::placeholder {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-widest);
+  font-weight: var(--fw-regular);
+}
+
+.agent-name-input:focus {
+  animation: input-glow-travel 4s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------
+   LOGIN BUTTON
+---------------------------------------------------------- */
+.login-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-5) var(--space-8);
+  clip-path: var(--clip-notch-all);
+  overflow: hidden;
+  transition:
+    transform var(--dur-normal) var(--ease-out-back),
+    box-shadow var(--dur-normal) var(--ease-out-expo);
+}
+
+/* Button layers */
+.btn-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.12) 0%,
+    rgba(123, 47, 255, 0.18) 50%,
+    rgba(255, 47, 248, 0.12) 100%
+  );
+  border: 1px solid var(--neon-cyan);
+  clip-path: inherit;
+  transition: background var(--dur-normal) var(--ease-out-expo);
+}
+
+.btn-glitch-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.3) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan-sm);
+  transition: color var(--dur-fast) var(--ease-out-expo);
+}
+
+.btn-arrow {
+  position: relative;
+  z-index: 1;
+  font-size: var(--fs-lg);
+  color: var(--neon-violet);
+  transition:
+    transform var(--dur-normal) var(--ease-out-back),
+    color var(--dur-fast) var(--ease-out-expo);
+}
+
+/* Button hover states */
+.login-btn:hover .btn-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.22) 0%,
+    rgba(123, 47, 255, 0.28) 50%,
+    rgba(255, 47, 248, 0.22) 100%
+  );
+  box-shadow: var(--glow-cyan-lg);
+}
+
+.login-btn:hover .btn-glitch-layer {
+  opacity: 1;
+  animation: glitch-clip-a 0.3s steps(1) infinite;
+}
+
+.login-btn:hover .btn-text {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan-glow);
+}
+
+.login-btn:hover .btn-arrow {
+  transform: translateX(6px);
+  color: var(--neon-cyan);
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    var(--glow-cyan-lg),
+    0 20px 40px rgba(0, 0, 10, 0.6);
+}
+
+.login-btn:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* ----------------------------------------------------------
+   BOOT LOG
+---------------------------------------------------------- */
+.boot-log {
+  width: 100%;
+  max-width: 480px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-slow) var(--ease-out-expo);
+  animation: fade-in 0.5s var(--ease-out-expo) both;
+  animation-delay: 1s;
+}
+
+.boot-log.active {
+  max-height: 200px;
+}
+
+.boot-log-inner {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-left: 2px solid var(--neon-green);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.boot-log-line {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--neon-green);
+  letter-spacing: var(--ls-wide);
+  opacity: 0;
+  animation: fade-in-up 0.3s var(--ease-out-expo) forwards;
+}
+
+.boot-log-line.warn {
+  color: var(--neon-gold);
+}
+
+.boot-log-line.error {
+  color: var(--neon-red);
+}
+
+.boot-log-line.info {
+  color: var(--neon-cyan);
+}
+
+/* ----------------------------------------------------------
+   FOOTER
+---------------------------------------------------------- */
+.login-footer {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  animation: fade-in 1.5s var(--ease-out-expo) both;
+  animation-delay: 1.2s;
+  z-index: var(--z-surface);
+}
+
+.footer-divider {
+  color: var(--border-mid);
+}
+
+#footer-time {
+  color: var(--neon-cyan);
+  font-size: var(--fs-xs);
+}
+
+/* ----------------------------------------------------------
+   LOGIN TRANSITION OVERLAY
+---------------------------------------------------------- */
+.login-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) + 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  background: var(--color-void);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+
+.login-transition-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Grid flash effect inside overlay */
+.transition-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-flash 1s ease-in-out forwards;
+}
+
+.transition-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-widest);
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  text-shadow: var(--glow-cyan-lg);
+  animation: identity-confirm 1s var(--ease-out-expo) forwards;
+}
+
+.transition-subtext {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  letter-spacing: var(--ls-wider);
+  color: var(--neon-violet);
+  text-transform: uppercase;
+  text-shadow: var(--glow-violet-sm);
+  animation: fade-in-up 1s var(--ease-out-expo) both;
+  animation-delay: 0.4s;
+}
+
+/* ----------------------------------------------------------
+   MIRROR FLOOR EFFECT
+   Subtle reflection plane beneath the login card
+---------------------------------------------------------- */
+.login-mirror-floor {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 245, 255, 0.02) 40%,
+    rgba(0, 245, 255, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  transform: scaleY(-1);
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 100%
+  );
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 600px) {
+  .login-title {
+    font-size: var(--fs-3xl);
+  }
+
+  .login-input-block {
+    max-width: 100%;
+    padding: 0 var(--space-4);
+  }
+
+  .login-wrapper {
+    gap: var(--space-5);
+  }
+}

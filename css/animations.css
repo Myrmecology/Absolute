@@ -1,0 +1,598 @@
+/* ============================================================
+   ABSOLUTE — css/animations.css
+   Advanced Keyframes | Traveling Glows | Irregular Shadows
+   Perimeter Lights | Pulsating Geometry | GSAP Helpers
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   TRAVELING PERIMETER GLOW
+   Applied to irregular shapes via clip-path containers
+---------------------------------------------------------- */
+@keyframes perimeter-travel-cyan {
+  0%   {
+    box-shadow:
+      -2px 0   0 2px var(--neon-cyan),
+      0 0 20px var(--neon-cyan-glow);
+  }
+  25%  {
+    box-shadow:
+      0 -2px  0 2px var(--neon-cyan),
+      0 0 20px var(--neon-cyan-glow);
+  }
+  50%  {
+    box-shadow:
+      2px 0   0 2px var(--neon-cyan),
+      0 0 20px var(--neon-cyan-glow);
+  }
+  75%  {
+    box-shadow:
+      0  2px  0 2px var(--neon-cyan),
+      0 0 20px var(--neon-cyan-glow);
+  }
+  100% {
+    box-shadow:
+      -2px 0   0 2px var(--neon-cyan),
+      0 0 20px var(--neon-cyan-glow);
+  }
+}
+
+@keyframes perimeter-travel-violet {
+  0%   { box-shadow: -2px 0  0 2px var(--neon-violet), 0 0 20px var(--neon-violet-glow); }
+  25%  { box-shadow: 0 -2px  0 2px var(--neon-violet), 0 0 20px var(--neon-violet-glow); }
+  50%  { box-shadow:  2px 0  0 2px var(--neon-violet), 0 0 20px var(--neon-violet-glow); }
+  75%  { box-shadow: 0  2px  0 2px var(--neon-violet), 0 0 20px var(--neon-violet-glow); }
+  100% { box-shadow: -2px 0  0 2px var(--neon-violet), 0 0 20px var(--neon-violet-glow); }
+}
+
+@keyframes perimeter-travel-magenta {
+  0%   { box-shadow: -2px 0  0 2px var(--neon-magenta), 0 0 20px var(--neon-magenta-glow); }
+  25%  { box-shadow: 0 -2px  0 2px var(--neon-magenta), 0 0 20px var(--neon-magenta-glow); }
+  50%  { box-shadow:  2px 0  0 2px var(--neon-magenta), 0 0 20px var(--neon-magenta-glow); }
+  75%  { box-shadow: 0  2px  0 2px var(--neon-magenta), 0 0 20px var(--neon-magenta-glow); }
+  100% { box-shadow: -2px 0  0 2px var(--neon-magenta), 0 0 20px var(--neon-magenta-glow); }
+}
+
+/* ----------------------------------------------------------
+   PSEUDO PERIMETER GLOW USING CONIC GRADIENT
+   Use on ::before/::after for a true traveling light effect
+---------------------------------------------------------- */
+@keyframes conic-spin {
+  0%   { --conic-angle: 0deg; }
+  100% { --conic-angle: 360deg; }
+}
+
+@property --conic-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.perimeter-glow-cyan::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent 0deg,
+    var(--neon-cyan) 60deg,
+    transparent 120deg
+  );
+  animation: conic-spin 3s linear infinite;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.perimeter-glow-violet::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent 0deg,
+    var(--neon-violet) 60deg,
+    transparent 120deg
+  );
+  animation: conic-spin 4s linear infinite;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.perimeter-glow-magenta::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent 0deg,
+    var(--neon-magenta) 60deg,
+    transparent 120deg
+  );
+  animation: conic-spin 5s linear infinite;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+/* ----------------------------------------------------------
+   STRANGE SHADOW SYSTEM
+   Shadows that appear, shift, and dissolve unpredictably
+---------------------------------------------------------- */
+@keyframes strange-shadow-a {
+  0%   {
+    filter: drop-shadow(0 0 0px transparent);
+  }
+  15%  {
+    filter: drop-shadow(-8px 12px 20px rgba(123, 47, 255, 0.6))
+            drop-shadow(4px -6px 15px rgba(0, 245, 255, 0.3));
+  }
+  30%  {
+    filter: drop-shadow(0 0 0px transparent);
+  }
+  55%  {
+    filter: drop-shadow(12px 0px 25px rgba(255, 47, 248, 0.5))
+            drop-shadow(-4px 8px 12px rgba(0, 245, 255, 0.2));
+  }
+  70%  {
+    filter: drop-shadow(0 0 0px transparent);
+  }
+  85%  {
+    filter: drop-shadow(-6px -10px 18px rgba(123, 47, 255, 0.4))
+            drop-shadow(8px 4px 22px rgba(255, 215, 0, 0.2));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px transparent);
+  }
+}
+
+@keyframes strange-shadow-b {
+  0%   { filter: drop-shadow(0 0 0px transparent); }
+  20%  {
+    filter: drop-shadow(10px -8px 30px rgba(0, 245, 255, 0.5))
+            drop-shadow(-6px 10px 18px rgba(255, 47, 248, 0.3));
+  }
+  40%  { filter: drop-shadow(0 0 0px transparent); }
+  65%  {
+    filter: drop-shadow(-12px 6px 20px rgba(255, 215, 0, 0.4))
+            drop-shadow(8px -12px 15px rgba(123, 47, 255, 0.3));
+  }
+  80%  { filter: drop-shadow(0 0 0px transparent); }
+  100% { filter: drop-shadow(0 0 0px transparent); }
+}
+
+@keyframes strange-shadow-c {
+  0%   { filter: drop-shadow(0 0 0px transparent); }
+  10%  {
+    filter: drop-shadow(16px 0px 28px rgba(255, 43, 78, 0.5));
+  }
+  25%  { filter: drop-shadow(0 0 0px transparent); }
+  50%  {
+    filter: drop-shadow(-10px -14px 22px rgba(0, 255, 157, 0.4))
+            drop-shadow(6px 8px 16px rgba(123, 47, 255, 0.4));
+  }
+  75%  { filter: drop-shadow(0 0 0px transparent); }
+  90%  {
+    filter: drop-shadow(8px 16px 24px rgba(0, 245, 255, 0.5));
+  }
+  100% { filter: drop-shadow(0 0 0px transparent); }
+}
+
+.shadow-strange-a { animation: strange-shadow-a 7s ease-in-out infinite; }
+.shadow-strange-b { animation: strange-shadow-b 9s ease-in-out infinite; }
+.shadow-strange-c { animation: strange-shadow-c 11s ease-in-out infinite; }
+
+/* ----------------------------------------------------------
+   PULSATING GEOMETRY
+   Scale + glow breathe effect
+---------------------------------------------------------- */
+@keyframes geometry-breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes geometry-breathe-slow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(0.9);
+  }
+  33% {
+    transform: scale(1.06) rotate(1deg);
+    filter: brightness(1.4);
+  }
+  66% {
+    transform: scale(0.97) rotate(-1deg);
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes geometry-pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(0, 245, 255, 0.2),
+      0 0 20px rgba(0, 245, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 245, 255, 0.6),
+      0 0 60px rgba(0, 245, 255, 0.3),
+      0 0 90px rgba(123, 47, 255, 0.2);
+  }
+}
+
+.breathe         { animation: geometry-breathe 4s ease-in-out infinite; }
+.breathe-slow    { animation: geometry-breathe-slow 6s ease-in-out infinite; }
+.pulse-glow      { animation: geometry-pulse-glow 3s ease-in-out infinite; }
+
+/* ----------------------------------------------------------
+   GLITCH EFFECT
+---------------------------------------------------------- */
+@keyframes glitch-skew {
+  0%   { transform: skew(0deg); }
+  2%   { transform: skew(-2deg); }
+  4%   { transform: skew(0deg); }
+  96%  { transform: skew(0deg); }
+  98%  { transform: skew(1.5deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes glitch-clip-a {
+  0%   { clip-path: inset(40% 0 61% 0); transform: translate(-4px, 0); }
+  20%  { clip-path: inset(92% 0 1% 0);  transform: translate(4px, 0); }
+  40%  { clip-path: inset(43% 0 1% 0);  transform: translate(-4px, 0); }
+  60%  { clip-path: inset(25% 0 58% 0); transform: translate(4px, 0); }
+  80%  { clip-path: inset(54% 0 7% 0);  transform: translate(-4px, 0); }
+  100% { clip-path: inset(58% 0 43% 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-clip-b {
+  0%   { clip-path: inset(24% 0 29% 0); transform: translate(4px, 0);  }
+  20%  { clip-path: inset(54% 0 21% 0); transform: translate(-4px, 0); }
+  40%  { clip-path: inset(73% 0 4% 0);  transform: translate(4px, 0);  }
+  60%  { clip-path: inset(7% 0 82% 0);  transform: translate(-4px, 0); }
+  80%  { clip-path: inset(45% 0 33% 0); transform: translate(4px, 0);  }
+  100% { clip-path: inset(14% 0 73% 0); transform: translate(0, 0);    }
+}
+
+.glitch {
+  position: relative;
+  animation: glitch-skew 4s steps(1) infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.glitch::before {
+  color: var(--neon-cyan);
+  animation: glitch-clip-a 3s steps(1) infinite;
+  opacity: 0.8;
+}
+
+.glitch::after {
+  color: var(--neon-magenta);
+  animation: glitch-clip-b 3.5s steps(1) infinite;
+  opacity: 0.8;
+}
+
+/* ----------------------------------------------------------
+   FLOAT ANIMATIONS
+---------------------------------------------------------- */
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(1.5deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-18px) rotate(-2deg); }
+}
+
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25%       { transform: translateY(-8px) translateX(6px); }
+  75%       { transform: translateY(-14px) translateX(-4px); }
+}
+
+.float-a  { animation: float-a 6s ease-in-out infinite; }
+.float-b  { animation: float-b 8s ease-in-out infinite; }
+.float-c  { animation: float-c 10s ease-in-out infinite; }
+
+/* ----------------------------------------------------------
+   ROTATION ANIMATIONS
+---------------------------------------------------------- */
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotate-slow-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes rotate-wobble {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(3deg) scale(1.02); }
+  75%  { transform: rotate(-3deg) scale(0.98); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.rotate-slow         { animation: rotate-slow 20s linear infinite; }
+.rotate-slow-reverse { animation: rotate-slow-reverse 25s linear infinite; }
+.rotate-wobble       { animation: rotate-wobble 5s ease-in-out infinite; }
+
+/* ----------------------------------------------------------
+   FLICKER
+---------------------------------------------------------- */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  8%        { opacity: 0.9; }
+  9%        { opacity: 1; }
+  30%       { opacity: 1; }
+  31%       { opacity: 0.85; }
+  32%       { opacity: 1; }
+  70%       { opacity: 1; }
+  71%       { opacity: 0.7; }
+  72%       { opacity: 1; }
+  73%       { opacity: 0.9; }
+  74%       { opacity: 1; }
+}
+
+@keyframes flicker-fast {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.8; }
+  51%       { opacity: 1; }
+  55%       { opacity: 0.6; }
+  56%       { opacity: 1; }
+}
+
+.flicker      { animation: flicker 5s steps(1) infinite; }
+.flicker-fast { animation: flicker-fast 0.3s steps(1) infinite; }
+
+/* ----------------------------------------------------------
+   SCAN LINE WIPE
+---------------------------------------------------------- */
+@keyframes scan-wipe {
+  0%   { transform: translateY(-100%); opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.scan-wipe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan-glow),
+    var(--neon-cyan),
+    var(--neon-cyan-glow),
+    transparent
+  );
+  pointer-events: none;
+  animation: scan-wipe 4s linear infinite;
+  z-index: var(--z-overlay);
+}
+
+/* ----------------------------------------------------------
+   DATA STREAM TEXT
+---------------------------------------------------------- */
+@keyframes data-stream {
+  0%   { opacity: 0; transform: translateY(8px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
+.data-stream-item {
+  animation: data-stream 3s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------
+   REVEAL ANIMATIONS — GSAP ready helpers
+   These classes are set/removed by GSAP
+---------------------------------------------------------- */
+.gsap-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gsap-from-bottom {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.gsap-from-top {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.gsap-from-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.gsap-from-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.gsap-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* ----------------------------------------------------------
+   TAB CUBE BREATHE
+   The 3D breathing cube on the Create Trip tab
+---------------------------------------------------------- */
+@keyframes cube-breathe {
+  0%, 100% {
+    transform: scale3d(1, 1, 1) rotateY(0deg);
+    box-shadow:
+      var(--glow-cyan-md),
+      inset 0 0 30px rgba(0, 245, 255, 0.05);
+  }
+  50% {
+    transform: scale3d(1.06, 1.06, 1.06) rotateY(4deg);
+    box-shadow:
+      var(--glow-cyan-lg),
+      inset 0 0 50px rgba(0, 245, 255, 0.1);
+  }
+}
+
+@keyframes cube-face-shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------------------------------------------------------
+   SCROLL UNFOLD
+   For the Create Trip scroll reveal
+---------------------------------------------------------- */
+@keyframes scroll-unfurl {
+  0% {
+    clip-path: inset(50% 20% 50% 20%);
+    opacity: 0;
+  }
+  40% {
+    clip-path: inset(0% 20% 0% 20%);
+    opacity: 0.8;
+  }
+  100% {
+    clip-path: inset(0% 0% 0% 0%);
+    opacity: 1;
+  }
+}
+
+.scroll-unfurl {
+  animation: scroll-unfurl 1.2s var(--ease-out-expo) forwards;
+}
+
+/* ----------------------------------------------------------
+   PORTAL OPEN
+   For the Flux image reveal in Create Trip
+---------------------------------------------------------- */
+@keyframes portal-open {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    filter: brightness(3) blur(20px);
+    opacity: 0;
+  }
+  40% {
+    filter: brightness(2) blur(8px);
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(75% at 50% 50%);
+    filter: brightness(1) blur(0px);
+    opacity: 1;
+  }
+}
+
+.portal-open {
+  animation: portal-open 2s var(--ease-out-expo) forwards;
+}
+
+/* ----------------------------------------------------------
+   NUMBER COUNT UP
+   For bank charts and stat displays
+---------------------------------------------------------- */
+@keyframes number-flash {
+  0%, 100% { color: var(--text-primary); }
+  50%       { color: var(--neon-cyan); text-shadow: var(--glow-cyan-sm); }
+}
+
+.number-flash {
+  animation: number-flash 0.4s ease-in-out 3;
+}
+
+/* ----------------------------------------------------------
+   INPUT HOVER EFFECTS
+   Traveling glow on the login input field
+---------------------------------------------------------- */
+@keyframes input-glow-travel {
+  0%   {
+    background-position: 0% 50%;
+    box-shadow:
+      0 0 15px rgba(0, 245, 255, 0.3),
+      inset 0 0 15px rgba(0, 245, 255, 0.05);
+  }
+  50%  {
+    background-position: 100% 50%;
+    box-shadow:
+      0 0 30px rgba(123, 47, 255, 0.5),
+      0 0 60px rgba(0, 245, 255, 0.2),
+      inset 0 0 20px rgba(123, 47, 255, 0.08);
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow:
+      0 0 15px rgba(0, 245, 255, 0.3),
+      inset 0 0 15px rgba(0, 245, 255, 0.05);
+  }
+}
+
+@keyframes input-scan {
+  0%   { top: 0%; opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ----------------------------------------------------------
+   LOGIN TRANSITION
+---------------------------------------------------------- */
+@keyframes grid-flash {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  30%  { opacity: 0.6; }
+  50%  { opacity: 1; }
+  70%  { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+@keyframes identity-confirm {
+  0%   { opacity: 0; transform: scale(0.8) translateY(10px); letter-spacing: 0.1em; }
+  50%  { opacity: 1; transform: scale(1.05) translateY(0); letter-spacing: 0.4em; }
+  100% { opacity: 1; transform: scale(1) translateY(0); letter-spacing: 0.3em; }
+}
+
+/* ----------------------------------------------------------
+   WARP SPEED — Used during page transitions
+---------------------------------------------------------- */
+@keyframes warp-speed {
+  0%   {
+    transform: scaleX(1) scaleY(1);
+    filter: blur(0px) brightness(1);
+    opacity: 1;
+  }
+  50%  {
+    transform: scaleX(0.02) scaleY(1);
+    filter: blur(4px) brightness(3);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0) scaleY(1);
+    filter: blur(8px) brightness(5);
+    opacity: 0;
+  }
+}
+
+.warp-out {
+  animation: warp-speed 0.6s var(--ease-in-expo) forwards;
+}

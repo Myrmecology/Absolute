@@ -1,0 +1,249 @@
+/* ============================================================
+   ABSOLUTE — css/variables.css
+   Design Token System | Every color, size, timing lives here
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     CORE BRAND COLORS
+  ---------------------------------------------------------- */
+  --color-void:           #00000f;
+  --color-deep:           #010116;
+  --color-abyss:          #02021e;
+  --color-surface:        #05051f;
+  --color-surface-mid:    #080830;
+  --color-surface-high:   #0d0d3a;
+
+  /* ----------------------------------------------------------
+     NEON PRIMARIES
+  ---------------------------------------------------------- */
+  --neon-cyan:            #00f5ff;
+  --neon-cyan-dim:        #00c8d4;
+  --neon-cyan-ghost:      rgba(0, 245, 255, 0.08);
+  --neon-cyan-glow:       rgba(0, 245, 255, 0.35);
+
+  --neon-violet:          #7b2fff;
+  --neon-violet-dim:      #5a1fd1;
+  --neon-violet-ghost:    rgba(123, 47, 255, 0.08);
+  --neon-violet-glow:     rgba(123, 47, 255, 0.35);
+
+  --neon-magenta:         #ff2ff8;
+  --neon-magenta-dim:     #c41fbe;
+  --neon-magenta-ghost:   rgba(255, 47, 248, 0.08);
+  --neon-magenta-glow:    rgba(255, 47, 248, 0.35);
+
+  --neon-gold:            #ffd700;
+  --neon-gold-dim:        #c9a800;
+  --neon-gold-ghost:      rgba(255, 215, 0, 0.08);
+  --neon-gold-glow:       rgba(255, 215, 0, 0.35);
+
+  --neon-green:           #00ff9d;
+  --neon-green-dim:       #00c977;
+  --neon-green-ghost:     rgba(0, 255, 157, 0.08);
+  --neon-green-glow:      rgba(0, 255, 157, 0.35);
+
+  --neon-red:             #ff2b4e;
+  --neon-red-dim:         #c91f3a;
+  --neon-red-ghost:       rgba(255, 43, 78, 0.08);
+  --neon-red-glow:        rgba(255, 43, 78, 0.35);
+
+  --neon-orange:          #ff7b00;
+  --neon-orange-dim:      #c96000;
+  --neon-orange-ghost:    rgba(255, 123, 0, 0.08);
+  --neon-orange-glow:     rgba(255, 123, 0, 0.35);
+
+  /* ----------------------------------------------------------
+     TEXT
+  ---------------------------------------------------------- */
+  --text-primary:         #e8eaff;
+  --text-secondary:       #9da3d4;
+  --text-muted:           #4a4f7a;
+  --text-accent:          var(--neon-cyan);
+  --text-danger:          var(--neon-red);
+  --text-success:         var(--neon-green);
+
+  /* ----------------------------------------------------------
+     BORDERS & LINES
+  ---------------------------------------------------------- */
+  --border-subtle:        rgba(100, 110, 200, 0.12);
+  --border-mid:           rgba(100, 110, 200, 0.25);
+  --border-strong:        rgba(100, 110, 200, 0.5);
+  --border-neon:          rgba(0, 245, 255, 0.4);
+  --border-neon-hot:      rgba(0, 245, 255, 0.9);
+
+  /* ----------------------------------------------------------
+     GLOW SHADOWS
+  ---------------------------------------------------------- */
+  --glow-cyan-sm:         0 0 8px rgba(0, 245, 255, 0.6);
+  --glow-cyan-md:         0 0 20px rgba(0, 245, 255, 0.5),
+                          0 0 40px rgba(0, 245, 255, 0.2);
+  --glow-cyan-lg:         0 0 30px rgba(0, 245, 255, 0.7),
+                          0 0 60px rgba(0, 245, 255, 0.3),
+                          0 0 100px rgba(0, 245, 255, 0.1);
+
+  --glow-violet-sm:       0 0 8px rgba(123, 47, 255, 0.6);
+  --glow-violet-md:       0 0 20px rgba(123, 47, 255, 0.5),
+                          0 0 40px rgba(123, 47, 255, 0.2);
+  --glow-violet-lg:       0 0 30px rgba(123, 47, 255, 0.7),
+                          0 0 60px rgba(123, 47, 255, 0.3),
+                          0 0 100px rgba(123, 47, 255, 0.1);
+
+  --glow-magenta-sm:      0 0 8px rgba(255, 47, 248, 0.6);
+  --glow-magenta-md:      0 0 20px rgba(255, 47, 248, 0.5),
+                          0 0 40px rgba(255, 47, 248, 0.2);
+  --glow-magenta-lg:      0 0 30px rgba(255, 47, 248, 0.7),
+                          0 0 60px rgba(255, 47, 248, 0.3),
+                          0 0 100px rgba(255, 47, 248, 0.1);
+
+  --glow-gold-sm:         0 0 8px rgba(255, 215, 0, 0.6);
+  --glow-gold-md:         0 0 20px rgba(255, 215, 0, 0.5),
+                          0 0 40px rgba(255, 215, 0, 0.2);
+
+  --glow-green-sm:        0 0 8px rgba(0, 255, 157, 0.6);
+  --glow-green-md:        0 0 20px rgba(0, 255, 157, 0.5),
+                          0 0 40px rgba(0, 255, 157, 0.2);
+
+  --glow-red-sm:          0 0 8px rgba(255, 43, 78, 0.6);
+  --glow-red-md:          0 0 20px rgba(255, 43, 78, 0.5),
+                          0 0 40px rgba(255, 43, 78, 0.2);
+
+  /* ----------------------------------------------------------
+     GLASSMORPHISM
+  ---------------------------------------------------------- */
+  --glass-bg:             rgba(5, 5, 31, 0.6);
+  --glass-bg-light:       rgba(13, 13, 58, 0.4);
+  --glass-blur:           blur(20px);
+  --glass-blur-heavy:     blur(40px);
+  --glass-border:         1px solid rgba(100, 110, 200, 0.2);
+  --glass-border-hot:     1px solid rgba(0, 245, 255, 0.4);
+
+  /* ----------------------------------------------------------
+     GRADIENTS
+  ---------------------------------------------------------- */
+  --grad-void:
+    radial-gradient(ellipse at 20% 50%, rgba(123, 47, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 245, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 47, 248, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #00000f 0%, #010116 100%);
+
+  --grad-cyan-violet:
+    linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 100%);
+
+  --grad-magenta-violet:
+    linear-gradient(135deg, var(--neon-magenta) 0%, var(--neon-violet) 100%);
+
+  --grad-gold-orange:
+    linear-gradient(135deg, var(--neon-gold) 0%, var(--neon-orange) 100%);
+
+  --grad-text-cyan:
+    linear-gradient(90deg, var(--neon-cyan) 0%, var(--neon-violet) 100%);
+
+  --grad-text-magenta:
+    linear-gradient(90deg, var(--neon-magenta) 0%, var(--neon-cyan) 100%);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+  ---------------------------------------------------------- */
+  --font-display:         'Orbitron', sans-serif;
+  --font-body:            'Rajdhani', sans-serif;
+  --font-mono:            'Share Tech Mono', monospace;
+
+  --fs-xs:                0.65rem;
+  --fs-sm:                0.75rem;
+  --fs-base:              0.9rem;
+  --fs-md:                1rem;
+  --fs-lg:                1.25rem;
+  --fs-xl:                1.5rem;
+  --fs-2xl:               2rem;
+  --fs-3xl:               2.75rem;
+  --fs-4xl:               3.5rem;
+  --fs-5xl:               5rem;
+
+  --fw-light:             300;
+  --fw-regular:           400;
+  --fw-medium:            500;
+  --fw-semibold:          600;
+  --fw-bold:              700;
+  --fw-black:             900;
+
+  --ls-tight:             -0.02em;
+  --ls-normal:            0;
+  --ls-wide:              0.08em;
+  --ls-wider:             0.15em;
+  --ls-widest:            0.3em;
+
+  --lh-tight:             1.1;
+  --lh-snug:              1.3;
+  --lh-normal:            1.5;
+  --lh-relaxed:           1.7;
+
+  /* ----------------------------------------------------------
+     SPACING
+  ---------------------------------------------------------- */
+  --space-1:              4px;
+  --space-2:              8px;
+  --space-3:              12px;
+  --space-4:              16px;
+  --space-5:              20px;
+  --space-6:              24px;
+  --space-8:              32px;
+  --space-10:             40px;
+  --space-12:             48px;
+  --space-16:             64px;
+  --space-20:             80px;
+  --space-24:             96px;
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+  ---------------------------------------------------------- */
+  --radius-sm:            4px;
+  --radius-md:            8px;
+  --radius-lg:            12px;
+  --radius-xl:            20px;
+  --radius-2xl:           32px;
+  --radius-pill:          9999px;
+
+  /* ----------------------------------------------------------
+     TIMING & EASING
+  ---------------------------------------------------------- */
+  --dur-instant:          80ms;
+  --dur-fast:             150ms;
+  --dur-normal:           300ms;
+  --dur-slow:             600ms;
+  --dur-slower:           1000ms;
+  --dur-crawl:            2000ms;
+
+  --ease-out-expo:        cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back:        cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-expo:         cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out-expo:     cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-elastic:         cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ----------------------------------------------------------
+     Z-INDEX LAYERS
+  ---------------------------------------------------------- */
+  --z-base:               1;
+  --z-surface:            10;
+  --z-overlay:            50;
+  --z-modal:              100;
+  --z-toast:              200;
+  --z-cursor:             9999;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+  ---------------------------------------------------------- */
+  --max-width:            1400px;
+  --nav-height:           72px;
+  --sidebar-width:        280px;
+
+  /* ----------------------------------------------------------
+     CLIP PATHS — Irregular shapes
+  ---------------------------------------------------------- */
+  --clip-slash:           polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  --clip-notch-tl:        polygon(20px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20px);
+  --clip-notch-tr:        polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 0% 100%);
+  --clip-notch-all:       polygon(16px 0%, calc(100% - 16px) 0%, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0% calc(100% - 16px), 0% 16px);
+  --clip-hex:             polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  --clip-arrow-right:     polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+}
