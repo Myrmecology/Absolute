@@ -179,3 +179,4 @@ private/
 private.js
 private.json
 internal/
+env.local.js

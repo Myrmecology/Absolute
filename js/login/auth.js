@@ -37,6 +37,8 @@ const AbsoluteAuth = (() => {
   function init() {
     if (!agentInput || !loginBtn) return;
 
+    sessionStorage.removeItem('absolute_agent');
+
     startFooterClock();
     bindEvents();
     runBootSequence();

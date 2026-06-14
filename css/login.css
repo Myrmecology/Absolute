@@ -127,7 +127,7 @@
 /* Subtitle */
 .login-subtitle {
   font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
   letter-spacing: var(--ls-widest);
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -189,7 +189,7 @@
 
 .status-text {
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--neon-green);
   letter-spacing: var(--ls-wider);
   text-transform: uppercase;
@@ -217,7 +217,7 @@
 
 .input-label {
   font-family: var(--font-display);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-wider);
   color: var(--neon-cyan);
@@ -233,7 +233,7 @@
 .input-label-sub {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   margin-left: auto;
@@ -310,7 +310,7 @@
   width: 100%;
   padding: var(--space-5) var(--space-6);
   background: transparent;
-  color: var(--neon-cyan);
+  color: var(--neon-red);
   font-family: var(--font-display);
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
@@ -471,7 +471,7 @@
 
 .boot-log-line {
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--neon-green);
   letter-spacing: var(--ls-wide);
   opacity: 0;
@@ -502,7 +502,7 @@
   align-items: center;
   gap: var(--space-4);
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;

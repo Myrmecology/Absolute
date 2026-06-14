@@ -137,7 +137,7 @@ const AbsoluteCursor = (() => {
     const particle = document.createElement('div');
     particle.className = 'cursor-trail-particle';
 
-    const size = Math.random() * 6 + 3;
+    const size = Math.random() * 14 + 8;
     const color = trailColors[trailColorIndex % trailColors.length];
     trailColorIndex++;
 
@@ -148,6 +148,7 @@ const AbsoluteCursor = (() => {
       height: ${size}px;
       background: ${color};
       box-shadow: 0 0 ${size * 2}px ${color};
+      animation-duration: 900ms;
     `;
 
     trail.appendChild(particle);
@@ -157,7 +158,7 @@ const AbsoluteCursor = (() => {
       if (particle.parentNode) {
         particle.parentNode.removeChild(particle);
       }
-    }, 600);
+    }, 900);
   }
 
   // ----------------------------------------------------------

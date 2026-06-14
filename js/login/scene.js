@@ -142,7 +142,7 @@ const AbsoluteScene = (() => {
     );
     magentaLight.diffuse   = new BABYLON.Color3(1, 0.18, 0.97);
     magentaLight.specular  = new BABYLON.Color3(1, 0.18, 0.97);
-    magentaLight.intensity = 1.0;
+    magentaLight.intensity = 0.5;
     magentaLight.range     = 14;
     lights.push(magentaLight);
 

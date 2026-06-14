@@ -25,15 +25,14 @@
        ENV INJECTION
        In production replace this with your server-side env loader
   ============================================================ -->
-  <script>
-    window.__ENV__ = {
-      CLAUDE_API_KEY: "",
-      FAL_API_KEY: ""
-    };
-  </script>
+  <!-- ============================================================
+       ENV INJECTION
+  ============================================================ -->
+  <script src="env.local.js"></script>
 </head>
 
 <body class="login-body">
+
 
   <!-- ============================================================
        CUSTOM CURSOR
@@ -71,7 +70,7 @@
     <div class="login-logo-block">
       <div class="logo-glyph">
         <span class="glyph-line top"></span>
-        <span class="glyph-core">A</span>
+        <span class="glyph-core">Justin's</span>
         <span class="glyph-line bottom"></span>
       </div>
       <h1 class="login-title">ABSOLUTE</h1>

@@ -596,3 +596,115 @@
 .warp-out {
   animation: warp-speed 0.6s var(--ease-in-expo) forwards;
 }
+
+/* ============================================================
+   EASTER EGG — Temporal Breach Glitch Overlay
+   Triggered by typing "GLITCH" on the dashboard
+   ============================================================ */
+
+.breach-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(255, 43, 78, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.breach-overlay.active {
+  animation: breach-flash 1.8s ease-out forwards;
+}
+
+.breach-text {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--neon-red);
+  text-shadow:
+    0 0 20px var(--neon-red),
+    0 0 40px rgba(255, 43, 78, 0.6);
+  position: relative;
+  opacity: 0;
+}
+
+.breach-overlay.active .breach-text {
+  animation:
+    breach-text-in 0.4s var(--ease-out-expo) forwards,
+    glitch-skew 0.15s steps(1) 6;
+}
+
+.breach-text::before,
+.breach-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font: inherit;
+}
+
+.breach-overlay.active .breach-text::before {
+  color: var(--neon-cyan);
+  animation: glitch-clip-a 0.25s steps(1) 6;
+  opacity: 0.7;
+}
+
+.breach-overlay.active .breach-text::after {
+  color: var(--neon-violet);
+  animation: glitch-clip-b 0.3s steps(1) 6;
+  opacity: 0.7;
+}
+
+.breach-subtext {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+  opacity: 0;
+}
+
+.breach-overlay.active .breach-subtext {
+  animation: breach-text-in 0.4s var(--ease-out-expo) 0.3s forwards;
+}
+
+.breach-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 43, 78, 0.06) 3px,
+    rgba(255, 43, 78, 0.06) 4px
+  );
+  pointer-events: none;
+}
+
+@keyframes breach-flash {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  10%  { opacity: 0.4; }
+  15%  { opacity: 1; }
+  20%  { opacity: 0.6; }
+  30%  { opacity: 0.85; }
+  85%  { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+
+@keyframes breach-text-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
